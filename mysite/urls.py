@@ -17,6 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
+# This can be done in templates/admin/base_site.html but it's not good practice
+# Note: if we change {{ site_header|default:_('Django Administration') }} to {{ site_header|default:_('New Default') }}
+# nothing is going to change because django sets site_header by default to "Django Administration"
+# So we either have to change it here or replace the entire line of logic mentioned above
 admin.AdminSite.site_header = "Polls Administration"
 
 

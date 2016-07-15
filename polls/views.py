@@ -11,11 +11,16 @@ from .models import Question, Choice
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
 
-    def get_queryset(self):
-        """return the last five published questions (not including theose set to be published in the future)."""
-        return Question.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:5]
+    # def get_queryset(self):
+    #     """return the last five published questions (not including theose set to be published in the future)."""
+    #     return Question.objects.filter(
+    #         pub_date__lte=timezone.now()
+    #     ).order_by('-pub_date')[:5]
+
+    # This is an easier way of specifying the queryset
+    # Note that in order to add logic you have to use the function get_queryset. If there is no logic involved,
+    # you can just override queryset
+    queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):

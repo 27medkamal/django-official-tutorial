@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
 
+{# This could also be written as object_list instead of question_list even if context_object_name is specified #}
 {% if question_list %}
     <ul>
         {% for question in question_list %}

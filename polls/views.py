@@ -22,6 +22,8 @@ class IndexView(generic.ListView):
     # you can just override queryset
     queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
+    allow_empty = False  # If False, this will give an HTTP404 error if queryset is empty. The default is True
+
 
 class DetailView(generic.DetailView):
     model = Question
